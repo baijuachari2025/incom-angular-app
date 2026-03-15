@@ -14,8 +14,10 @@
 
 @if (!isLoading() && students().length > 0) {
   @for (student of students(); track student.studentId) {
-    <mat-card class="example-card" appearance="outlined" style="margin-bottom: 12px;">
-      <app-student-details [student]="student" />
+    <mat-card class="student-card" appearance="outlined">
+      <div style="margin: 25px;">
+          <app-student-details [student]="student" />
+      </div>      
     </mat-card>
   }
 }
