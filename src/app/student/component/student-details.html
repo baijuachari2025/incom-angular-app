@@ -1,0 +1,28 @@
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ student.firstName }} {{ student.lastName }}</mat-panel-title>
+      <mat-panel-description>Student ID: {{ student.studentId }}</mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <p><strong>Email:</strong> {{ student.email }}</p>
+    <p><strong>Phone:</strong> {{ student.phone }}</p>
+    <p><strong>Date of Birth:</strong> {{ student.dateOfBirth }}</p>
+    <p><strong>Gender:</strong> {{ student.gender }}</p>
+    <p><strong>Enrollment Date:</strong> {{ student.enrollmentDate }}</p>
+    <p><strong>Major:</strong> {{ student.major }}</p>
+    <p><strong>GPA:</strong> {{ student.gpa }}</p>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel *ngFor="let course of courses()">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ course.courseName }}</mat-panel-title>
+      <mat-panel-description>{{ course.courseCode }}</mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <p><strong>Credits:</strong> {{ course.credits }}</p>
+    <p><strong>Department:</strong> {{ course.department }}</p>
+    <p><strong>Start Date:</strong> {{ course.startDate }}</p>
+    <p><strong>End Date:</strong> {{ course.endDate }}</p>
+  </mat-expansion-panel>
+</mat-accordion>

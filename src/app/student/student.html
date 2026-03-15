@@ -12,7 +12,7 @@
 
 <ul *ngIf="!isLoading() && students().length > 0">
   <li *ngFor="let student of students()">
-    {{ student.firstName }} {{ student.lastName }}
+    <app-student-details [student]="student" />
   </li>
 </ul>
 
