@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, signal } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,22 +14,34 @@ import { CourseService } from '../../course/service/course.service';
   templateUrl: './student-details.html',
   styleUrl: './student-details.css',
 })
-export class StudentDetailsComponent implements OnInit {
+export class StudentDetailsComponent implements OnInit, OnChanges {
   @Input({ required: true }) student!: Student;
   @Output() studentsUpdated = new EventEmitter<Student[]>();
   courses = signal<Course[]>([]);
 
   constructor(private studentService: StudentService, private courseService: CourseService, private snackBar: MatSnackBar) {}
 
-  // Fetch course details on component initialization
   ngOnInit() {
+    this.loadCourses();
+  }
+
+  ngOnChanges() {
+    this.loadCourses();
+  }
+
+  private loadCourses() {
     this.courseService.getCoursesByIds(this.student.courseIds).subscribe(courses => this.courses.set(courses));
   }
 
   onEnrollCourse() {
     const courseId = prompt('Enter Course ID to enroll:');
     if (!courseId) return;
-    this.studentService.enrollCourse(this.student.studentId, +courseId).subscribe();
+    this.studentService.enrollCourse(this.student.studentId, +courseId).subscribe({
+      next: (students) => {
+        this.snackBar.open('Student enrolled in course successfully', 'Close', { duration: 3000 });
+        this.studentsUpdated.emit(students as Student[]);
+      }
+    });
   }
 
   onUpdateStudent() {

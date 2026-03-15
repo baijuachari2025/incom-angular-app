@@ -18,7 +18,9 @@ export class StudentService {
   }
 
   enrollCourse(studentId: number, courseId: number) {
-    return this.http.post(`${API_END_POINT}/api/students/${studentId}/enroll/${courseId}`, {});
+    return this.http.post(`${API_END_POINT}/api/students/${studentId}/enroll/${courseId}`, {}).pipe(
+      switchMap(() => this.searchByLastName(this.currentLastName))
+    );
   }
 
   updateStudent(student: Student) {
