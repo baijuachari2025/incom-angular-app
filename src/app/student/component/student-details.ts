@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Student } from '../../types/student.model';
 import { Course } from '../../types/course.model';
 import { StudentService } from '../service/student.service';
+import { CourseService } from '../../course/service/course.service';
 
 @Component({
   selector: 'app-student-details',
@@ -18,10 +19,11 @@ export class StudentDetailsComponent implements OnInit {
   @Output() studentsUpdated = new EventEmitter<Student[]>();
   courses = signal<Course[]>([]);
 
-  constructor(private studentService: StudentService, private snackBar: MatSnackBar) {}
+  constructor(private studentService: StudentService, private courseService: CourseService, private snackBar: MatSnackBar) {}
 
+  // Fetch course details on component initialization
   ngOnInit() {
-    this.studentService.getCoursesByIds(this.student.courseIds).subscribe(courses => this.courses.set(courses));
+    this.courseService.getCoursesByIds(this.student.courseIds).subscribe(courses => this.courses.set(courses));
   }
 
   onEnrollCourse() {

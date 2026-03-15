@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { API_END_POINT } from '../../constants/api.constants';
 import { Student } from '../../types/student.model';
-import { Course } from '../../types/course.model';
 
 @Injectable({ providedIn: 'root' })
 export class StudentService {
@@ -19,13 +17,8 @@ export class StudentService {
     );
   }
 
-  getCoursesByIds(ids: number[]) {
-    if (!ids?.length) return forkJoin([]);
-    return forkJoin(ids.map(id => this.http.get<Course>(`${API_END_POINT}/api/courses/${id}`)));
-  }
-
   enrollCourse(studentId: number, courseId: number) {
-    return this.http.post(`${API_END_POINT}/api/students/enroll/${courseId}`, {});
+    return this.http.post(`${API_END_POINT}/api/students/${studentId}/enroll/${courseId}`, {});
   }
 
   updateStudent(student: Student) {

@@ -23,7 +23,7 @@
   <mat-expansion-panel *ngFor="let course of courses()">
     <mat-expansion-panel-header>
       <mat-panel-title>{{ course.courseName }}</mat-panel-title>
-      <mat-panel-description>{{ course.courseCode }}</mat-panel-description>
+      <mat-panel-description>Course ID:{{ course.courseId }}</mat-panel-description>
     </mat-expansion-panel-header>
 
     <p><strong>Credits:</strong> {{ course.credits }}</p>
