@@ -8,14 +8,18 @@
   <button class="search-button" mat-raised-button color="primary" (click)="onSearch()">Search</button>
 </div>
 
-<mat-spinner *ngIf="isLoading()" diameter="40"></mat-spinner>
+@if (isLoading()) {
+  <mat-spinner diameter="40"></mat-spinner>
+}
 
-<ul *ngIf="!isLoading() && students().length > 0">
-  <li *ngFor="let student of students()">
-    <app-student-details [student]="student" />
-  </li>
-</ul>
+@if (!isLoading() && students().length > 0) {
+  @for (student of students(); track student.studentId) {
+    <mat-card class="example-card" appearance="outlined" style="margin-bottom: 12px;">
+      <app-student-details [student]="student" />
+    </mat-card>
+  }
+}
 
-<p *ngIf="!isLoading() && students().length === 0 && lastNameQuery">
-  No results found.
-</p>
+@if (!isLoading() && students().length === 0 && lastNameQuery) {
+  <p>No results found.</p>
+}

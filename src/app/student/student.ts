@@ -4,6 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { StudentService } from './service/student.service';
 import { Student } from '../types/student.model';
@@ -11,7 +12,7 @@ import { StudentDetailsComponent } from './component/student-details';
 
 @Component({
   selector: 'app-student',
-  imports: [FormsModule, CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, StudentDetailsComponent],
+  imports: [FormsModule, CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatProgressSpinnerModule, MatCardModule, StudentDetailsComponent],
   templateUrl: './student.html',
   styleUrl: './student.scss',
 })

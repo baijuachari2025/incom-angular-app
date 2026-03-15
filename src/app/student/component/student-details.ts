@@ -9,6 +9,7 @@ import { StudentService } from '../service/student.service';
   selector: 'app-student-details',
   imports: [CommonModule, MatExpansionModule],
   templateUrl: './student-details.html',
+  styleUrl: './student-details.css',
 })
 export class StudentDetailsComponent implements OnInit {
   @Input({ required: true }) student!: Student;
