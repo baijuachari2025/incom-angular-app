@@ -1,3 +1,23 @@
-.student-accordion .mat-expansion-panel-header {
+.student-accordion mat-expansion-panel:first-child .mat-expansion-panel-header {
   align-items: center;
+  background-color: #dbeafe;
+  color: #1e3a5f;
+}
+
+.student-accordion mat-expansion-panel:first-child .mat-expansion-panel-header mat-panel-description {
+  color: #3b6ea5;
+}
+
+.student-accordion mat-expansion-panel:not(:first-child) {
+  margin-left: 30px;
+}
+
+.student-accordion mat-expansion-panel:not(:first-child) .mat-expansion-panel-header {
+  align-items: center;
+  background-color: #dcfce7;
+  color: #14532d;
+}
+
+.student-accordion mat-expansion-panel:not(:first-child) .mat-expansion-panel-header mat-panel-description {
+  color: #166534;
 }
