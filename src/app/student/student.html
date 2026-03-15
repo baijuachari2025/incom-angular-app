@@ -8,3 +8,14 @@
   <button class="search-button" mat-raised-button color="primary" (click)="onSearch()">Search</button>
 </div>
 
+<mat-spinner *ngIf="isLoading()" diameter="40"></mat-spinner>
+
+<ul *ngIf="!isLoading() && students().length > 0">
+  <li *ngFor="let student of students()">
+    {{ student.firstName }} {{ student.lastName }}
+  </li>
+</ul>
+
+<p *ngIf="!isLoading() && students().length === 0 && lastNameQuery">
+  No results found.
+</p>

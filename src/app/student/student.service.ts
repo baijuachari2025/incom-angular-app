@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 import { API_END_POINT } from '../constants/api.constants';
-
-axios.defaults.baseURL = API_END_POINT;
+import { Student } from '../types/student.model';
 
 @Injectable({ providedIn: 'root' })
 export class StudentService {
-  searchByLastName(lastNameQuery: string) {
-    return axios.get('api/students/searchByLastName', { params: { lastName: lastNameQuery } });
+  constructor(private http: HttpClient) {}
+
+  searchByLastName(lastName: string) {
+    return this.http.get<Student[] | any>(`${API_END_POINT}/api/students/searchByLastName`, { params: { lastName } }).pipe(
+      map(res => Array.isArray(res) ? res : (res.data ?? res.students ?? []))
+    );
   }
 }
