@@ -16,7 +16,7 @@
   @for (student of students(); track student.studentId) {
     <mat-card class="student-card" appearance="outlined">
       <div style="margin: 25px;">
-          <app-student-details [student]="student" />
+        <app-student-details [student]="student" (studentsUpdated)="students.set($event)" />
       </div>      
     </mat-card>
   }

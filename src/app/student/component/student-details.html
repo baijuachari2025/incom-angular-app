@@ -14,9 +14,9 @@
     <p><strong>GPA:</strong> {{ student.gpa }}</p>
 
     <mat-action-row>
-      <button matButton="tonal" class="action-btn">Enroll Course</button>
-      <button matButton="tonal" class="action-btn">Update Student</button>
-      <button matButton="tonal" class="action-btn">Delete Student</button>
+      <button matButton="tonal" class="action-btn" (click)="onEnrollCourse()">Enroll Course</button>
+      <button matButton="tonal" class="action-btn" (click)="onUpdateStudent()">Update Student</button>
+      <button matButton="tonal" class="action-btn" (click)="onDeleteStudent()">Delete Student</button>
     </mat-action-row>
   </mat-expansion-panel>
 
