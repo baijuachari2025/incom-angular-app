@@ -12,6 +12,12 @@
     <p><strong>Enrollment Date:</strong> {{ student.enrollmentDate }}</p>
     <p><strong>Major:</strong> {{ student.major }}</p>
     <p><strong>GPA:</strong> {{ student.gpa }}</p>
+
+    <mat-action-row>
+      <button matButton="tonal" class="action-btn">Enroll Course</button>
+      <button matButton="tonal" class="action-btn">Update Student</button>
+      <button matButton="tonal" class="action-btn">Delete Student</button>
+    </mat-action-row>
   </mat-expansion-panel>
 
   <mat-expansion-panel *ngFor="let course of courses()">
